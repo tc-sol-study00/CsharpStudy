@@ -6,6 +6,15 @@
                 y*=++x;
             }
             Console.WriteLine("{0}! = {1:N0}",x,y);
+
+            /*
+             * 実は一行で書ける
+             */
+
+            Console.WriteLine("{0}! = {1:N0}", 10,10!);
         }
+
+
+
     }
 }

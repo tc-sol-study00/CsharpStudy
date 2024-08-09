@@ -15,9 +15,6 @@ namespace Sort {
                 bool swapped = false;
                 for (int swap1=swap2-1; swap1 >= setP;swap2=(--swap1)+1) {
                     if (list[swap2] < list[swap1]) {
-                        //int w = list[swap1];
-                        //list[swap1] = list[swap2];
-                        //list[swap2] = w;
                         (list[swap1], list[swap2]) = (list[swap2], list[swap1]);
                         swapped = true;
                     }
