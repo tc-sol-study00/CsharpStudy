@@ -4,7 +4,7 @@ using System.Reflection.Metadata.Ecma335;
 namespace OilGsSimulationToObject {
     class Programs {
 
-        private static List<JidoSha> JidoShas = new List<JidoSha>();
+        private static List<JidoSha> JidoShas = new List<JidoSha>();    //共変性を利用し、基底・派生クラス両方使えるようにする
         private static GsStation gsStation = new GsStation();
         static void Main() {
 
