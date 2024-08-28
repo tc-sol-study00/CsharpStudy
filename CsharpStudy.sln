@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowChart", "FlowChart\FlowChart.csproj", "{0BF56327-4D54-43E8-96D7-0DA9B4F17055}"
 EndProject
@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gyoretu", "Gyoretu\Gyoretu.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sort", "Sort\Sort.csproj", "{7A4D605A-DE0E-43AC-A5E0-532BA5FAACDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpStudy202408", "CSharpStudy20240825\CSharpStudy202408.csproj", "{AA2209CD-58CE-4029-921B-B8633634EB99}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectOriented", "ObjectOriented\ObjectOriented.csproj", "{9EF02C3B-5942-423D-B5F2-FD7552813C66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpStudy202408", "CSharpStudy202408\CSharpStudy202408.csproj", "{C1BFF7A0-0818-4515-80B2-96D86B8C3889}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilGsSimulationToObject", "OilGsSimulationToObject\OilGsSimulationToObject.csproj", "{21203EEE-ED5E-417B-BD11-96E40B4007A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +45,18 @@ Global
 		{7A4D605A-DE0E-43AC-A5E0-532BA5FAACDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A4D605A-DE0E-43AC-A5E0-532BA5FAACDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A4D605A-DE0E-43AC-A5E0-532BA5FAACDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA2209CD-58CE-4029-921B-B8633634EB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA2209CD-58CE-4029-921B-B8633634EB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA2209CD-58CE-4029-921B-B8633634EB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA2209CD-58CE-4029-921B-B8633634EB99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EF02C3B-5942-423D-B5F2-FD7552813C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EF02C3B-5942-423D-B5F2-FD7552813C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EF02C3B-5942-423D-B5F2-FD7552813C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EF02C3B-5942-423D-B5F2-FD7552813C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BFF7A0-0818-4515-80B2-96D86B8C3889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BFF7A0-0818-4515-80B2-96D86B8C3889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BFF7A0-0818-4515-80B2-96D86B8C3889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BFF7A0-0818-4515-80B2-96D86B8C3889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21203EEE-ED5E-417B-BD11-96E40B4007A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21203EEE-ED5E-417B-BD11-96E40B4007A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21203EEE-ED5E-417B-BD11-96E40B4007A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21203EEE-ED5E-417B-BD11-96E40B4007A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
