@@ -8,7 +8,8 @@ namespace OilGsSimulationToObject {
         private static GsStation gsStation = new GsStation();
         static void Main() {
 
-            JidoShas.Add(new JidoSha("A車", 20, 60, 0.2));
+            //２つのオブジェクトが扱える
+            JidoShas.Add(new JidoSha("A車", 20, 60, 0.2));   
             JidoShas.Add(new JidoShawithOil("B車", 20, 60, 0.2, 0));
 
             foreach (JidoSha aCar in JidoShas) {
@@ -36,6 +37,7 @@ namespace OilGsSimulationToObject {
                     Action<double>? runBetweenHomeToGs = null;
                     Func<bool>? oilCheck = null;
 
+                    //デリゲートとラムダ式で２つのオブジェクト用のメソッドを切り分ける
                     if (aCar is JidoShawithOil jidoShaWithOil) {
                         souKou = kyori => jidoShaWithOil.Soukou(kyori);
                         runBetweenHomeToGs = kyori => jidoShaWithOil.RunBetweenHomeToGs(kyori);
