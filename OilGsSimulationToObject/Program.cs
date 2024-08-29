@@ -9,7 +9,7 @@ namespace OilGsSimulationToObject {
         static void Main() {
 
             //２つのオブジェクトが扱える
-            JidoShas.Add(new JidoSha("A車", 20, 60, 0.2));   
+            JidoShas.Add(new JidoSha("A車", 20, 60, 0.2));
             JidoShas.Add(new JidoShawithOil("B車", 20, 60, 0.2, 0));
 
             foreach (JidoSha aCar in JidoShas) {
@@ -17,6 +17,8 @@ namespace OilGsSimulationToObject {
                  * 走行距離入力で、"E"あるいは"e"が入力されるまで処理を継続する
                  * ガス欠の場合は、処理終了
                  */
+
+                
                 Console.WriteLine("{0}のシミュレーション",aCar.CarName);
                 
                 while (true) {
@@ -39,7 +41,7 @@ namespace OilGsSimulationToObject {
 
                     //デリゲートとラムダ式で２つのオブジェクト用のメソッドを切り分ける
                     if (aCar is JidoShawithOil jidoShaWithOil) {
-                        souKou = kyori => jidoShaWithOil.Soukou(kyori);
+                        souKou = kyori => jidoShaWithOil.Soukou(kyori); 
                         runBetweenHomeToGs = kyori => jidoShaWithOil.RunBetweenHomeToGs(kyori);
                         oilCheck = () => jidoShaWithOil.OilCheck();
                     }
@@ -49,7 +51,7 @@ namespace OilGsSimulationToObject {
                         oilCheck = () => true;
                     }
 
-                    souKou(souKouKyori ?? 0);    //走行距離インプット・タンク残量計算
+                    souKou(souKouKyori??0);    //走行距離インプット・タンク残量計算
                     if (aCar.GasKetsuCheck()) break;   //ガス欠チェック
                     /*
                      * チェック

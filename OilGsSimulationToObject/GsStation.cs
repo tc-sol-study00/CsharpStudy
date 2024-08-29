@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace OilGsSimulationToObject {
-    internal class GsStation {
+    public class GsStation {
         /*
          * 満タン
          */

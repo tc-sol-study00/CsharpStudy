@@ -1,14 +1,11 @@
 ﻿namespace OilGsSimulationToObject {
-
     public class JidoSha {
-        //メンバー
-
+        //メンバー（プロパティ）
         public string CarName { get; set; }
         public double NenPi { get; set; }
         public double TankFull { get; set; }
         public double TankLimit { get; set; }
         public double TankZanryo { get; set; }
-
         //コンストラクタ 
         public JidoSha(string CarName, double NenPi, double TankFull, double LimitPct) {
             this.CarName = CarName;
@@ -19,26 +16,18 @@
         }
 
         //メソッド
-
         /*
          * 走行
          */
-
         public (double, double) Soukou(int argSoukouKyori) {
-
             double retTankZanryo = TankZanryo - (argSoukouKyori / NenPi);
-
             Console.WriteLine("走行距離= {0:D5}", argSoukouKyori);
-
             TankZanryo = retTankZanryo;
-
             return (TankZanryo, argSoukouKyori);
         }
-
         /*
          * ガス残量チェック
          */
-
         public bool GsRemainCheck() {
             string displayStatus = "";
             bool checkStatus = TankZanryo >= TankLimit;
@@ -49,7 +38,6 @@
             else {
                 displayStatus = "NG";
             }
-
             //上記のifたちと同意
             displayStatus = checkStatus ? "OK" : "NG";
 
@@ -57,7 +45,6 @@
 
             return checkStatus;
         }
-
         /*
          * 家ーＧＳ間
          */
@@ -68,11 +55,9 @@
 
             return TankZanryo;
         }
-
         /*
          * ガス欠チェック
          */
-
         public bool GasKetsuCheck() {
             if (TankZanryo <= 0) {
                 Console.WriteLine("ガス欠です");
@@ -82,6 +67,5 @@
                 return (false);
             }
         }
-
     }
 }
