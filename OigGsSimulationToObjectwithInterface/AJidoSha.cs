@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace OigGsSimulationToObjectwithInterface {
     /// <summary>
-    /// 自動車クラスのインターフェース
-    /// オイル付き自動車クラスと自動車クラスで共通部分をコールするため作成
+    /// 抽象クラス（説明用なので処理には関係ない）
     /// </summary>
-    public interface IJidoSha {
+    public abstract class AJidoSha {///
         //メンバー（プロパティ）
         public string CarName { get; set; }
         public double NenPi { get; set; }
@@ -19,18 +18,27 @@ namespace OigGsSimulationToObjectwithInterface {
         /*
          * 走行
          */
-        public (double, double) Soukou(int argSoukouKyori);
+        public abstract (double, double) Soukou(int argSoukouKyori);
         /*
          * ガス残量チェック
          */
-        public bool GsRemainCheck();
+        public abstract bool GsRemainCheck();
         /*
          * 家ーＧＳ間
          */
-        public double RunBetweenHomeToGs(double argMovedDist);
+        public abstract double RunBetweenHomeToGs(double argMovedDist);
         /*
          * ガス欠チェック
          */
-        public bool GasKetsuCheck();
+        public bool GasKetsuCheck() {
+            if (TankZanryo <= 0) {
+                Console.WriteLine("ガス欠です");
+                return (true);
+            }
+            else {
+                return (false);
+            }
+        }
     }
 }
+

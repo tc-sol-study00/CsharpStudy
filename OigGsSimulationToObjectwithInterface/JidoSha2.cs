@@ -1,10 +1,8 @@
 ﻿namespace OigGsSimulationToObjectwithInterface {
-
     /// <summary>
-    /// 自動車・オイル付き自動車インターフェースクラス対応につき、virtual記述追加
-    /// 基底クラスはvirtualと書く
+    /// 抽象クラスを継承している説明用クラス（処理には関係がない）
     /// </summary>
-    public class JidoSha : IJidoSha {
+    public class JidoSha2 : AJidoSha {
         //メンバー
         public string CarName { get; set; }
         public double NenPi { get; set; }
@@ -12,7 +10,7 @@
         public double TankLimit { get; set; }
         public double TankZanryo { get; set; }
         //コンストラクタ 
-        public JidoSha(string CarName, double NenPi, double TankFull, double LimitPct) {
+        public JidoSha2(string CarName, double NenPi, double TankFull, double LimitPct) {
             this.CarName = CarName;
             this.NenPi = NenPi;
             this.TankFull = TankFull;
@@ -24,7 +22,7 @@
         /*
          * 走行
          */
-        public virtual (double, double) Soukou(int argSoukouKyori) {
+        public override (double, double) Soukou(int argSoukouKyori) {
             double retTankZanryo = TankZanryo - (argSoukouKyori / NenPi);
             Console.WriteLine("走行距離= {0:D5}", argSoukouKyori);
             TankZanryo = retTankZanryo;
@@ -33,7 +31,7 @@
         /*
          * ガス残量チェック
          */
-        public bool GsRemainCheck() {
+        public override bool GsRemainCheck() {
             string displayStatus = "";
             bool checkStatus = TankZanryo >= TankLimit;
 
@@ -53,7 +51,7 @@
         /*
          * 家ーＧＳ間
          */
-        public virtual double RunBetweenHomeToGs(double argMovedDist) {
+        public override double RunBetweenHomeToGs(double argMovedDist) {
             double tankZanryo = TankZanryo - (argMovedDist / NenPi);
 
             TankZanryo = tankZanryo;
@@ -63,7 +61,7 @@
         /*
          * ガス欠チェック
          */
-        public bool GasKetsuCheck() {
+        public  bool GasKetsuCheck() {
             if (TankZanryo <= 0) {
                 Console.WriteLine("ガス欠です");
                 return (true);
@@ -72,5 +70,7 @@
                 return (false);
             }
         }
+
+
     }
 }

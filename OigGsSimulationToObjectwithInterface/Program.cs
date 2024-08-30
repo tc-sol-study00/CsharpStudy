@@ -3,7 +3,9 @@
 namespace OigGsSimulationToObjectwithInterface {
     class Programs {
 
+        //自動車クラスのインターフェースをタイプにする
         private static List<IJidoSha> JidoShas = new List<IJidoSha>();    //共変性を利用し、基底・派生クラス両方使えるようにする
+       
         private static GsStation gsStation = new GsStation();
         static void Main() {
 
@@ -31,6 +33,9 @@ namespace OigGsSimulationToObjectwithInterface {
                     string? strSoKouKyori = Console.ReadLine();
                     if (strSoKouKyori == "e" || strSoKouKyori == "E") break;
                     int? souKouKyori = Int32.Parse(strSoKouKyori);
+
+                    //インターフェース利用なので、aCarのオブジェクトでコールするメソッドを切り分ける
+                    //aCarが、JidoShaであれば、JidoSha.Sokouをコール、JidoShawithOilであれば、JidoShawithOil.Sokouをコール
 
                     aCar.Soukou(souKouKyori ?? 0);    //走行距離インプット・タンク残量計算
                     if (aCar.GasKetsuCheck()) break;   //ガス欠チェック
@@ -65,8 +70,8 @@ namespace OigGsSimulationToObjectwithInterface {
                     var strFuelWillness = Console.ReadLine();
                     if (strFuelWillness == "y") {   //GSに行くと指示された
                         //ＧＳへ
-                        aCar.RunBetweenHomeToGs(5);
-                        if (aCar.GasKetsuCheck()) break;
+                        aCar.RunBetweenHomeToGs(5); //インターフェース利用で、各オブジェクトのRunBetweenHomeToGsをコール
+                        if (aCar.GasKetsuCheck()) break;    //インターフェース利用
 
                         /*
                          * GS
@@ -85,7 +90,7 @@ namespace OigGsSimulationToObjectwithInterface {
                         }
                         //家に戻る
                         aCar.RunBetweenHomeToGs(5);
-                        if (aCar.GasKetsuCheck()) break;
+                        if (aCar.GasKetsuCheck()) break;    //インターフェース利用
                     }
 
                 }

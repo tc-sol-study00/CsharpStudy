@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 using System.Transactions;
 
 namespace OigGsSimulationToObjectwithInterface {
-
-    /// <summary>
-    /// 自動車・オイル付き自動車インターフェースクラス対応につき、orverride記述追加
-    /// 基底クラスはorverrideと書く
-    /// </summary>
-    public class JidoShawithOil : JidoSha, IJidoSha {
+    public class JidoShawithOil2 : JidoSha2 {
         public double SouSoukouKyori { get; set; }
         public double OilChangeInterval { get; set; }
         public double SouSoukouKyoriAtLastOilChange { get; set; }
         public double SouSoukouKyoriAtNextOilChange { get; set; }
-        public JidoShawithOil(string argCarName,double argNenPi,double argTankFull,double argLimitPct,double argSouSoukouKyori) : base (argCarName, argNenPi, argTankFull, argLimitPct) {
+        public JidoShawithOil2(string argCarName,double argNenPi,double argTankFull,double argLimitPct,double argSouSoukouKyori) : base (argCarName, argNenPi, argTankFull, argLimitPct) {
             SouSoukouKyori = argSouSoukouKyori;                                 //総走行距離（新車納品時は0とする）
                                                                                 //オイル交換関係変数
             OilChangeInterval = 5000.0;
