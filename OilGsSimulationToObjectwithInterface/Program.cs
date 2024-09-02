@@ -1,6 +1,9 @@
 ﻿using OilGsSimulationToObject;
 
 namespace OigGsSimulationToObjectwithInterface {
+    /// <summary>
+    /// GSシミュレーション　インターフェース使用
+    /// </summary>
     class Programs {
 
         //自動車クラスのインターフェースをタイプにする
