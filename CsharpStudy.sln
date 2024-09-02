@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpStudy202408", "CSharp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilGsSimulationToObject", "OilGsSimulationToObject\OilGsSimulationToObject.csproj", "{21203EEE-ED5E-417B-BD11-96E40B4007A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OigGsSimulationToObjectwithInterface", "OigGsSimulationToObjectwithInterface\OigGsSimulationToObjectwithInterface.csproj", "{6CECEF5C-58B5-4B69-B138-5EEA50ED8217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OilGsSimulationToObjectwithInterface", "OigGsSimulationToObjectwithInterface\OilGsSimulationToObjectwithInterface.csproj", "{6CECEF5C-58B5-4B69-B138-5EEA50ED8217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfceTest", "InterfceTest\InterfceTest.csproj", "{DE9F9ADC-CA47-4C02-9925-DE619C2502F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfceTest", "InterfceTest\InterfceTest.csproj", "{DE9F9ADC-CA47-4C02-9925-DE619C2502F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
