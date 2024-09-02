@@ -10,7 +10,6 @@ namespace InterfceTest {
         public void Hashiru() {
             Console.WriteLine("インターフェース版自動車が走る");
         }
-
     }
 
     internal class JidoShaWithAbst : AJidoShaBikeShared {
@@ -18,7 +17,5 @@ namespace InterfceTest {
         public override void Hashiru() {
             Console.WriteLine("抽象クラス版自動車が走る");
         }
-
-
     }
 }
