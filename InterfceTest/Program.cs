@@ -13,10 +13,10 @@
             foreach obj2;
             */
 
-
+            /*
             obj.Add(jidoSha);
             obj.Add(bike);
-
+            */
 
             jidoSha.Hashiru();  
             bike.Hashiru();
