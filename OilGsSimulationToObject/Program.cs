@@ -2,8 +2,10 @@
 using System.Reflection.Metadata.Ecma335;
 
 namespace OilGsSimulationToObject {
+    /// <summary>
+    /// GSシミュレーション
+    /// </summary>
     class Programs {
-
         private static List<JidoSha> JidoShas = new List<JidoSha>();    //共変性を利用し、基底・派生クラス両方使えるようにする
         private static GsStation gsStation = new GsStation();
         static void Main() {
@@ -17,8 +19,6 @@ namespace OilGsSimulationToObject {
                  * 走行距離入力で、"E"あるいは"e"が入力されるまで処理を継続する
                  * ガス欠の場合は、処理終了
                  */
-
-                
                 Console.WriteLine("{0}のシミュレーション",aCar.CarName);
                 
                 while (true) {
