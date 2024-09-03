@@ -5,7 +5,6 @@ namespace LinqStudy {
     internal class Program {
         static void Main(string[] args) {
 
-            IReadOnlyList<M_CityMonthlyTemperattures> a;
             IList<M_CityMonthlyTemperattures> m_CityMonthlyTemperattureList
                 = new List<M_CityMonthlyTemperattures>() {
                     new M_CityMonthlyTemperattures(){ CityName = "TOKYO", MaxTemp = 30.0 },
