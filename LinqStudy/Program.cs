@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 
 namespace LinqStudy {
+    /// <summary>
+    /// LINQ勉強用
+    /// </summary>
     internal class Program {
         static void Main(string[] args) {
 

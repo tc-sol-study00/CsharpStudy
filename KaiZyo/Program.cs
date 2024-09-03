@@ -1,4 +1,8 @@
 ﻿namespace KaiZyo {
+
+    /// <summary>
+    /// 階乗演習
+    /// </summary>
     internal class Program {
         static void Main(string[] args) {
             int atai=10,x=0,y=1;

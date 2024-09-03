@@ -6,11 +6,10 @@ using System;
 using System.Net.Http.Headers;
 using static System.Net.Mime.MediaTypeNames;
 
-
-
-
 namespace EntityFrameworkStudy {
-    
+/// <summary>
+/// EFCoreの演習
+/// </summary>
     class Program {
 
         private const string connectionString = "Server=localhost;Port=5432;Username=study01;Password=study01;Database=postgres;";
@@ -35,12 +34,16 @@ namespace EntityFrameworkStudy {
             _context = new EntityFrameworkStudyContext(contextOptions);
         }
 
+        public enum ProcSwith {
+            NODI,
+            DI
+        }
         static void Main() {
 
-            const string selectFlg = "NODI";
+            const ProcSwith selectFlg = ProcSwith.NODI;
 
             switch (selectFlg) {
-                case "DI":
+                case ProcSwith.DI:
                     // サービスコレクションの設定
                     var serviceCollection = new ServiceCollection();
                     ConfigureServices(serviceCollection);
@@ -53,7 +56,7 @@ namespace EntityFrameworkStudy {
                     app.EnshuMethod();
                     break;
 
-                case "NODI":
+                case ProcSwith.NODI:
                     OpenDB();
                     new Enshu(_context).EnshuMethod();
                     break;
