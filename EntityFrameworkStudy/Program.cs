@@ -38,6 +38,7 @@ namespace EntityFrameworkStudy {
             NODI,
             DI
         }
+
         static void Main() {
 
             const ProcSwith selectFlg = ProcSwith.NODI;
@@ -58,7 +59,17 @@ namespace EntityFrameworkStudy {
 
                 case ProcSwith.NODI:
                     OpenDB();
-                    new Enshu(_context).EnshuMethod();
+                    //new Enshu(_context).EnshuMethod();
+                    //new KougiYou(_context).KougiYouMethod();
+
+                    if (true) {
+                        Benkyo benkyo = new Benkyo(_context);
+                        benkyo.BenkyoMethod();
+                    }
+                    else {
+                        new Benkyo(_context).BenkyoMethod();
+                    }
+
                     break;
 
                 default:

@@ -16,28 +16,33 @@ namespace EntityFrameworkStudy {
         public void KougiYouMethod() {
 
 
+            if (true) {
+            
+            
+            }
+            else {
+                var d = _context.Education;
+                var e = d.Where(x => x.ClassCode == "A" && x.SeitoNo == "01");
+                var xx = e.ToList();
 
-            var d = _context.Education;
-            var e = d.Where(x => x.ClassCode == "A" && x.SeitoNo == "01");
-            var xx = e.ToList();
 
+                //List<Education> a = _context.Education.Include(c => c.ClassAttr).ToList();
 
-            //List<Education> a = _context.Education.Include(c => c.ClassAttr).ToList();
+                var b = _context.ClassAttr.Include(x => x.Educations).ToList();
 
-            var b = _context.ClassAttr.Include(x => x.Educations).ToList();
+                //var c = _context.ClassAttr.ToList();
+                //       var c = _context.Education.Include(x => x.ClassAttr).ToList();
 
-            //var c = _context.ClassAttr.ToList();
-            //       var c = _context.Education.Include(x => x.ClassAttr).ToList();
+                var dt = _context.Education.ToList();
+                dt[0].SeitoNo = "1";
 
-            var dt = _context.Education.ToList();
-            dt[0].SeitoNo = "1";
+                //dt.Add(xxx);
 
-            //dt.Add(xxx);
+                //_context.Education.Add(xxxx);
+                //_context.Education.Remove();
 
-            //_context.Education.Add(xxxx);
-            //_context.Education.Remove();
-
-            //_context.SaveChanges();
+                //_context.SaveChanges();
+            }
         }
 
 

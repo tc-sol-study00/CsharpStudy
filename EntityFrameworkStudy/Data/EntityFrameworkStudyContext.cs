@@ -15,7 +15,8 @@ namespace EntityFrameworkStudy.Data
         {
         }
 
-        public DbSet<EntityFrameworkStudy.Models.Education> Education { get; set; } = default!;
-        public DbSet<EntityFrameworkStudy.Models.ClassAttr> ClassAttr { get; set; } = default!;
+        public DbSet<Education> Education { get; set; } = default!;
+        public DbSet<ClassAttr> ClassAttr { get; set; } = default!;
+
     }
 }
