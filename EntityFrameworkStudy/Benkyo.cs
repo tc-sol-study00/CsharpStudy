@@ -107,10 +107,36 @@ namespace EntityFrameworkStudy {
                 classattrs.Add(new ClassAttr() { ClassCode = "G", Tannin = "Gさん" });
             }
 
+            //更新前になにが変更されたかチェックできる
+            //savechangesされると消えるので、savechanges直前でチェック
             _context.ChangeTracker.DetectChanges();
             Console.WriteLine(_context.ChangeTracker.DebugView.LongView);
 
             _context.SaveChanges();
+
+            //やったらダメなやつ
+
+            List<ClassAttr> data = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList();
+            string tannin = data[0].Tannin;    //データがない時にアベンドするし、[0]がマジックナンバー、リストデータではない
+
+            var data3 = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList(); //var大好きな人ほど、データ型の認識がない
+
+            //Nullや0件データの想定をしましょう
+            if(data3.Count() <= 0) {
+                //NULLの処置
+            }
+            //なんでもかんでもListにするのはやめましょう
+
+            //かならず一意に戻るデータは、listで受けない
+            //NULLがありえるなら、タイプの横に"?"をつけてnull許容型にする
+            ClassAttr? data2 = _context.ClassAttr.Where(x => x.ClassCode == "A").SingleOrDefault();
+
+            //Nullや0件データの想定をしましょう
+            if (data2 == null) {
+                //NULLの処置
+            }
+
+
         }
     }
 }
