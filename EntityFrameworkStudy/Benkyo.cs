@@ -9,6 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EntityFrameworkStudy {
+
+    /// <summary>
+    /// 2024/9/24に実施した座学＋演習の内容
+    /// 主にEfcore
+    /// </summary>
     public class Benkyo {
 
         private static EntityFrameworkStudyContext _context;
@@ -91,8 +96,9 @@ namespace EntityFrameworkStudy {
             _context.ClassAttr.Remove(classattr);
             _context.SaveChanges();
 
-            //// ここまで
 
+            //Addをトラッキングするには、List変換してはいけない
+            //変更はListに変換してもＯＫ
             var classattrs = _context.ClassAttr;
 
             classattrs.Find("F").Tannin = "FFさん";
