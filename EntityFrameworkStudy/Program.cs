@@ -67,7 +67,7 @@ namespace EntityFrameworkStudy {
                         benkyo.BenkyoMethod();
                     }
                     else {
-                        new Benkyo(_context).BenkyoMethod();
+                        new Enshu(_context).EnshuMethod();
                     }
 
                     break;

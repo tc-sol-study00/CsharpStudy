@@ -75,68 +75,100 @@ namespace EntityFrameworkStudy {
                 }
             }
 
-            //挿入
-            ClassAttr classattr = new ClassAttr() { ClassCode = "G", Tannin = "Gさん" };
+            //外部結合(フラット化)
+            if (true) {
+                var leftOuterJoin = from cls in _context.ClassAttr
+                                    join edu in _context.Education
+                                    on cls.ClassCode equals edu.ClassCode into grp
+                                    from edu in grp.DefaultIfEmpty()
+                                    select new { cls, edu }
+                            ;
+            
+            //外部結合(フラット化しない)
+                var leftOuterJoin2 = from cls in _context.ClassAttr
+                                    join edu in _context.Education 
+                                    on cls.ClassCode equals edu.ClassCode into grp
+                                     select new { cls, grp }
+                            ;
+             //ネスト結合
+                var leftOuterJoin3 = from cls in _context.ClassAttr
+                                     join edu in _context.Education
+                                     on cls.ClassCode equals edu.ClassCode into grp
+                                     select new { cls, grp }
+            ;
+            //フラット結合
+                var leftOuterJoin4 = from cls in _context.ClassAttr
+                                     from edu in _context.Education
+                                     where cls.ClassCode == edu.ClassCode
+                                     select new { cls, edu };
+            }
 
-            ClassAttr? classattr_r;
-            if ((classattr_r = _context.ClassAttr.AsNoTracking().Where(x => x.ClassCode == "G").SingleOrDefault()) != null) {
-                _context.ClassAttr.Remove(classattr_r);
+            if (false) {
+
+                //挿入
+                ClassAttr classattr = new ClassAttr() { ClassCode = "G", Tannin = "Gさん" };
+
+                ClassAttr? classattr_r;
+                if ((classattr_r = _context.ClassAttr.AsNoTracking().Where(x => x.ClassCode == "G").SingleOrDefault()) != null) {
+                    _context.ClassAttr.Remove(classattr_r);
+                    _context.SaveChanges();
+                }
+
+                _context.ClassAttr.Add(classattr);
+                _context.SaveChanges();
+
+                //更新
+                classattr.Tannin = "GGさん";
+                _context.ClassAttr.Update(classattr);
+                _context.SaveChanges();
+
+                //削除
+                _context.ClassAttr.Remove(classattr);
+                _context.SaveChanges();
+
+
+                //Addをトラッキングするには、List変換してはいけない
+                //変更はListに変換してもＯＫ
+                var classattrs = _context.ClassAttr;
+
+                classattrs.Find("F").Tannin = "FFさん";
+
+                if (_context.ClassAttr.AsNoTracking().Where(x => x.ClassCode == "G").SingleOrDefault() == null) {
+                    classattrs.Add(new ClassAttr() { ClassCode = "G", Tannin = "Gさん" });
+                }
+
+                //更新前になにが変更されたかチェックできる
+                //savechangesされると消えるので、savechanges直前でチェック
+                _context.ChangeTracker.DetectChanges();
+                Console.WriteLine(_context.ChangeTracker.DebugView.LongView);
+
                 _context.SaveChanges();
             }
-
-            _context.ClassAttr.Add(classattr);
-            _context.SaveChanges();
-
-            //更新
-            classattr.Tannin = "GGさん";
-            _context.ClassAttr.Update(classattr);
-            _context.SaveChanges();
-
-            //削除
-            _context.ClassAttr.Remove(classattr);
-            _context.SaveChanges();
-
-
-            //Addをトラッキングするには、List変換してはいけない
-            //変更はListに変換してもＯＫ
-            var classattrs = _context.ClassAttr;
-
-            classattrs.Find("F").Tannin = "FFさん";
-
-            if (_context.ClassAttr.AsNoTracking().Where(x => x.ClassCode == "G").SingleOrDefault() == null) {
-                classattrs.Add(new ClassAttr() { ClassCode = "G", Tannin = "Gさん" });
-            }
-
-            //更新前になにが変更されたかチェックできる
-            //savechangesされると消えるので、savechanges直前でチェック
-            _context.ChangeTracker.DetectChanges();
-            Console.WriteLine(_context.ChangeTracker.DebugView.LongView);
-
-            _context.SaveChanges();
-
             //やったらダメなやつ
 
-            List<ClassAttr> data = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList();
-            string tannin = data[0].Tannin;    //データがない時にアベンドするし、[0]がマジックナンバー、リストデータではない
+            if (false) {
 
-            var data3 = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList(); //var大好きな人ほど、データ型の認識がない
+                List<ClassAttr> data = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList();
+                string tannin = data[0].Tannin;    //データがない時にアベンドするし、[0]がマジックナンバー、リストデータではない
 
-            //Nullや0件データの想定をしましょう
-            if(data3.Count() <= 0) {
-                //NULLの処置
+                var data3 = _context.ClassAttr.Where(x => x.ClassCode == "A").ToList(); //var大好きな人ほど、データ型の認識がない
+
+                //Nullや0件データの想定をしましょう
+                if (data3.Count() <= 0) {
+                    //NULLの処置
+                }
+                //なんでもかんでもListにするのはやめましょう
+
+                //かならず一意に戻るデータは、listで受けない
+                //NULLがありえるなら、タイプの横に"?"をつけてnull許容型にする
+                ClassAttr? data2 = _context.ClassAttr.Where(x => x.ClassCode == "A").SingleOrDefault();
+
+                //Nullや0件データの想定をしましょう
+                if (data2 == null) {
+                    //NULLの処置
+                }
+
             }
-            //なんでもかんでもListにするのはやめましょう
-
-            //かならず一意に戻るデータは、listで受けない
-            //NULLがありえるなら、タイプの横に"?"をつけてnull許容型にする
-            ClassAttr? data2 = _context.ClassAttr.Where(x => x.ClassCode == "A").SingleOrDefault();
-
-            //Nullや0件データの想定をしましょう
-            if (data2 == null) {
-                //NULLの処置
-            }
-
-
         }
     }
 }

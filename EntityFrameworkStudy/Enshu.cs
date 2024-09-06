@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using EntityFrameworkStudy.Data;
+﻿using EntityFrameworkStudy.Data;
 using EntityFrameworkStudy.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace EntityFrameworkStudy {
@@ -21,13 +21,14 @@ namespace EntityFrameworkStudy {
             };
 
             //SQLの中身を見る様（処理には関係がない）
-            var a = _context.Education.Include(x => x.ClassAttr).Where(x => x.RikaScore > 10);
-            var b = a.OrderBy(x => x.ClassCode);
-            var c = b.ThenBy(x => x.SeitoNo);
+            var a = _context.Education.Include(x => x.ClassAttr);
+            var b = a.Where(x => x.RikaScore > 10);
+            var c = b.OrderBy(x => x.ClassCode);
+            var d = c.ThenBy(x => x.SeitoNo);
 
-            var d = c.ToList();
+            var e = d.ToList();
 
-            List<Education> dataList = d;
+            List<Education> dataList = e;
 
             //var result = _context.Education.Include(x => x.ClassAttr).OrderBy(x => x.ClassCode).ThenBy(x => x.SeitoNo);
             foreach (var item in dataList) {
@@ -39,7 +40,7 @@ namespace EntityFrameworkStudy {
             m1 = item => { uint ttl = item.KokugoScore ?? 0 + item.SuugakuScore ?? 0 + item.SuugakuScore ?? 0; Console.WriteLine("{0,-5}:{1,-5}:{2,-5}:{3,5}:{4,5}:{5,5}:{6:6}", item.ClassCode, item.ClassAttr.Tannin, item.SeitoNo, item.KokugoScore, item.SuugakuScore, item.SuugakuScore, ttl); };
 
             //演習１－２(delegateを使った例：x => m1(x)の部分
-            _context.Education.Include(x => x.ClassAttr).OrderBy(x => x.ClassCode).ThenBy(x => x.SeitoNo).ToList().ForEach(x => Console.WriteLine(x.ClassCode,x));
+            _context.Education.Include(x => x.ClassAttr).OrderBy(x => x.ClassCode).ThenBy(x => x.SeitoNo).ToList().ForEach(x => Console.WriteLine(x.ClassCode, x));
 
 
             //Option
@@ -53,7 +54,7 @@ namespace EntityFrameworkStudy {
 
                 Education setDataToEducation = new Education { ClassCode = "A", SeitoNo = "999", KokugoScore = 99, SuugakuScore = 99, RikaScore = 99 };
 
-                if (_context.Education.Find(setDataToEducation.ClassCode, setDataToEducation.SeitoNo)==null) {
+                if (_context.Education.Find(setDataToEducation.ClassCode, setDataToEducation.SeitoNo) == null) {
                     _context.Education.Add(setDataToEducation);
                     _context.SaveChanges();
                 }
@@ -70,7 +71,7 @@ namespace EntityFrameworkStudy {
             if (false) {
                 Education deleteObject = _context.Education.FirstOrDefault(x => x.ClassCode == "A" && x.SeitoNo == "999");
 
-                 if (deleteObject != null) {
+                if (deleteObject != null) {
                     _context.Education.Remove(deleteObject);
                     _context.SaveChanges();
                 }
@@ -78,7 +79,7 @@ namespace EntityFrameworkStudy {
 
             if (false) {
                 //Findを使った例
-                Education deleteObject2=_context.Education.Find( "A", "999" );  //主キーの値をセット
+                Education deleteObject2 = _context.Education.Find("A", "999");  //主キーの値をセット
                 if (deleteObject2 != null) {
                     _context.Education.Remove(deleteObject2);
                     _context.SaveChanges();
